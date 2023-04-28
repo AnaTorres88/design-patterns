@@ -1,5 +1,7 @@
 
-class simpleEnemy {
+/* Objective: Factory that creates different types of enemies, in this case, we have 2 types, but they could be more */
+
+class SimpleEnemy {
     constructor(options) {
       this.power = options.health || 200;
       this.power = options.power || 'super strength';
@@ -8,7 +10,7 @@ class simpleEnemy {
     }
   }
   
-  class miniBoss {
+  class MiniBoss {
     constructor(options) {
       this.power = options.health || 6000;
       this.power = options.power || 'fire breath';
@@ -17,19 +19,26 @@ class simpleEnemy {
     }
   }
   
-  class characterFactory {
+  // This is the main character Factory class
+  class CharacterFactory {
     characterType;
-    characters = { simpleEnemy, miniBoss };
+    // characters obj contains the enemy Classes
+    characters = { SimpleEnemy, MiniBoss };
     getCharacter(characterType) {
       return this.characters[characterType];
     }
   }
   
-  const factory = new characterFactory();
+  // CharacterFactory gets instantiated
+  const factory = new CharacterFactory();
   
-  factory.characterType = 'miniBoss';
+  // Assign MiniBoss as characterType
+  factory.characterType = 'MiniBoss';
   
-  const newMiniBoss = factory.getCharacter('miniBoss');
+  // Invoke getCharacterMethod from our new factory
+  const newMiniBoss = factory.getCharacter('MiniBoss');
+
+  // Log the result
   console.log(
     new newMiniBoss({
       health: 7000,

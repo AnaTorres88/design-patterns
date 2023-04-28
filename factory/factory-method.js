@@ -1,8 +1,10 @@
+// An object witht he types of Coordinates
 CoordinateSystem = {
     CARTESIAN: 0,
     POLAR: 1
 };
 
+// A point class with x and y properties
 class Point {
     constructor(x, y) {
         this.x = x;
@@ -28,10 +30,11 @@ class Point {
     //   // 2. change ctor
     // }
 
+    // Returns a Point
     static newCartesianPoint(x, y) {
         return new Point(x, y);
     }
-
+    // Returns a Polar Point
     static newPolarPoint(rho, theta) {
         return new Point(rho * Math.cos(theta), rho * Math.sin(theta));
     }
@@ -52,9 +55,12 @@ class PointFactory {
     }
 }
 
+// Instantiating directly
+
 let p1 = new Point(2, 3, CoordinateSystem.CARTESIAN);
 console.log(p1);
-// Point → PointFactory
+
+// Creatinga Point using PointFactory
 let p2 = PointFactory.newPolarPoint(5, Math.PI / 2);
 console.log(p2);
 
