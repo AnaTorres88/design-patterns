@@ -1,9 +1,12 @@
+
+// Main Calculator class
 class Calculator {
     constructor() {
         this.value = 0;
         this.history = [];
     }
 
+    // we receive a command
     executeCommand(command) {
         this.value = command.execute(this.value);
         this.history.push(command);
@@ -16,6 +19,7 @@ class Calculator {
     }
 }
 
+/* Commands for different operations that can be performed by a calculator. Notice how all of them have an execute and an undo method*/
 class AddCommand {
     constructor(valueToAdd) {
         // this is the parameter for the methods
@@ -90,6 +94,9 @@ class SubtractCommand {
     }
   }
 
+  // Instantiate Calculator
   calculator = new Calculator();
+  // Call method executeCommand and we pass an Addition command with a number parameter of 10
   calculator.executeCommand(new AddCommand(10));
+  // Asking for a value
   console.log(calculator.value)
