@@ -1,4 +1,5 @@
 
+/* Classes that are different workers with the objective to make croissants */
 class IngredientsFetch {
     ingredients = [];
 
@@ -89,8 +90,10 @@ class BakingOven {
     }
 }
 
+// Main class. Facade of all these Classes to make a croissant
 class CroissantsMaker {
     
+    // instantiates all the required classes
     constructor() {
         this.ingredients = new IngredientsFetch();
         this.butter = new ButterBlock();
@@ -99,6 +102,7 @@ class CroissantsMaker {
         this.baker = new BakingOven();
     }
 
+    /* methods that call the workers and return information. Each one is a step but simplifies the operation */
     addIngredient(ingredient) {
         this.ingredients.addIngredient(ingredient);
     }
@@ -126,8 +130,10 @@ class CroissantsMaker {
         this.baker.bakingTemp(240);
     }
 }
+// We set our facade
 const croissantMaker = new CroissantsMaker();
 const ingredients = ['Milk', 'Yeast', 'Melted Butter', 'Salt', 'Sugar'];
+// Use methods inside the main class instead of a very complex interface
 ingredients.forEach(ingredient => croissantMaker.addIngredient(ingredient));
 croissantMaker.preparingDough();
 croissantMaker.configureOven();
