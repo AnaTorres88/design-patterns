@@ -1,3 +1,5 @@
+/* Recipe class, contains all steps to make a generic recipe. ES6 doesn't have abstract classes, that's why some methods don't contain
+any code. They will be ovewritten by extending the class*/
 class Recipe {
     addFlour() {
     }
@@ -41,8 +43,9 @@ class Recipe {
     }
 }
 
+// FloutTortillas class extends this Recipe
 class FlourTortillas extends Recipe  {
-    //steps for making flour tortillas
+    // Steps for making flour tortillas
 
     addFlour() {
         console.log('add Tortillas flour');
@@ -50,6 +53,7 @@ class FlourTortillas extends Recipe  {
     addLiquid(){
         console.log('add Water');
     }
+    // Empty methods to override unnecessary steps
     addYeast() {}
     letRest() {
         console.log('Letting mix rest for half hour');
@@ -64,7 +68,7 @@ class FlourTortillas extends Recipe  {
         console.log('Cooking tortillas on a griddle')
     }
 }
-
+// Since Bread is also a recipe that uses almos the same ingredients as FlourTortillas, it also extends Recipe
 class Bread extends Recipe {
     // Steps for making bread
     addFlour() {
@@ -91,6 +95,7 @@ class Bread extends Recipe {
     shapeAndExtend() {
         console.log('Shaping dough into three medium sized balls and let them rest');
     }
+    // Empty methods to override unnecessary steps
     pressDough() {}
     bake() {
         console.log('Baking bread in an oven at 300 celsius degrees')
@@ -98,7 +103,7 @@ class Bread extends Recipe {
 }
 
 function clientCode(concreteClass) {
-    // calls concrete classs which extends abstract class templateMethod
+    // calls concrete class which extends abstract class Recipe
     concreteClass.templateMethod();
 }
 console.log('This is the tortillas recipe \n')
@@ -108,3 +113,5 @@ console.log('-----------------------------\n')
 console.log('This is the Bread recipe \n')
 
 clientCode(new Bread());
+
+/* Expected steps from those algorithms */
