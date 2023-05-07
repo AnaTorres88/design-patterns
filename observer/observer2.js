@@ -1,5 +1,5 @@
 
-// Create a subject class
+// Create a subject class, this class holds all the observers
 class Subject {
     constructor() {
         this.observers=[];
@@ -18,7 +18,7 @@ class Subject {
     }
 }
 
-// Will notify
+// Will notify, has a notify method that passes some data (string).
 class SomeFn {
     constructor() {
     }
@@ -27,8 +27,10 @@ class SomeFn {
     }
 }
 
+// instantiates subject
 const subject = new Subject();
 
+// subscribes
 subject.subscribe(new SomeFn());
 subject.notify('World');
 
@@ -58,7 +60,7 @@ class CreatureSlayer {
     constructor(name) {
         this.name = name;
     }
-
+    // Notifies and expects a creature object
     notify(creature) {
         if(creature.hasPowerChanged) {
             console.log(`This creature has now a power level of ${creature.power}`);
